@@ -26,4 +26,9 @@ with col2:
     ax.plot(X,modelo.predict(X),color='red')
     st.pyplot(fig) 
 
-    
+st.header('Valor Anual da Franquia')
+novo_valor=st.number_input('Insira novo valor:', min_value=100.0, max_value=999999.0)
+if st.button('Processar'):
+    dados_novo_valor=pd.DataFrame([[novo_valor]],columns=['FrqAnual'])
+    prev=modelo.predict(dados_novo_valor)
+    st.header(f"Previsão de Custo Inicial: {prev[0]:.2f}")
